@@ -1,11 +1,11 @@
 import React from "react";
+import Header from "../components/Header"
 
 const Mainlayout = ({children}) => {
   return (
     <div>
-      <div>Hola header</div>
-      {children}
-      <div>Hola Footer</div>
+      <Header/>
+       {children}
     </div>
   );
 };
