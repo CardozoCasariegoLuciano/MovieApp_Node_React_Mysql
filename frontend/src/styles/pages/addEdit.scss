@@ -1,0 +1,70 @@
+.AddEdit {
+	width: 100%;
+}
+
+.addEdit-content {
+	width: 40%;
+	max-width: 450px;
+	margin: auto;
+	margin-top: 100px;
+	border-radius: 25px;
+	background-color: rgba($color: #000, $alpha: 0.4);
+	color: #eee;
+
+	form {
+		display: flex;
+		flex-direction: column;
+		padding: 20px;
+		width: 100%;
+
+		h3 {
+			text-align: center;
+		}
+
+		label {
+			margin-top: 10px;
+		}
+
+		input {
+			height: 25px;
+			border-radius: 10px;
+			border: none;
+			outline: none;
+			padding-left: 10px;
+			margin-top: 5px;
+			font-size: 16px;
+			color: rgba($color: #000000, $alpha: 0.8);
+		}
+
+		textarea {
+			padding: 5px;
+			resize: vertical;
+			min-height: 100px;
+			max-height: 250px;
+			width: 100%;
+			border: none;
+			outline: none;
+			border-radius: 7px;
+		}
+
+		button {
+			width: 30%;
+			height: 25px;
+			border-radius: 10px;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			margin: auto;
+			font-size: 16px;
+			background-color: rgba(#a965be, 0.8);
+			color: #eee;
+			margin-top: 20px;
+		}
+	}
+}
+
+@media (max-width: 650px) {
+	.addEdit-content {
+		width: 97%;
+	}
+}

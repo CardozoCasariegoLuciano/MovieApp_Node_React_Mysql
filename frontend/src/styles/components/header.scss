@@ -6,8 +6,7 @@
 
 .header-content {
 	height: 100%;
-	width: 60%;
-	margin: auto;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -33,12 +32,6 @@
 		&:hover {
 			text-decoration: underline;
 		}
-	}
-}
-
-@media (max-width: 1000px) {
-	.header-content {
-		width: 95%;
 	}
 }
 

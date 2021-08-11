@@ -1,0 +1,20 @@
+.Home{
+	min-height: calc(100vh - 60px);
+}
+
+.Home-content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 40px;
+}
+
+.home-Card_content{
+	width: 100%;
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+

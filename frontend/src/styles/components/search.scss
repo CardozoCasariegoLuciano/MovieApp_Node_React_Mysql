@@ -1,0 +1,41 @@
+$InputTextColor: rgba(50, 20, 20, 0.5);
+
+.search_conteiner {
+	width: 50%;
+}
+
+.searcher {
+	border-radius: 20px;
+	background-color: #eee;
+	padding: 5px 15px;
+	height: 30px;
+	width: 90%;
+	margin: auto;
+	display: flex;
+
+	label {
+		margin-right: 5px;
+		color: $InputTextColor;
+		margin-top: 2px;
+	}
+}
+
+.input-search {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 100%;
+	font-size: 1rem;
+
+	&::placeholder {
+		color: $InputTextColor;
+	}
+}
+
+@media (max-width: 420px) {
+	.search_conteiner {
+		width: 100%;
+		margin: auto;
+	}
+}
