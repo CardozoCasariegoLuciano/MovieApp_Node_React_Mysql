@@ -1,35 +1,62 @@
 .card_movie {
-	background-color: rgba(0, 0, 0, 0.6);
-	width: 300px;
-	min-height: 150px;
-	margin: 15px;
-	padding: 10px;
-	border-radius: 25px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 300px;
+  min-height: 150px;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 25px;
 }
 
-.card_title{
-	color: #eee;
-	margin: 0px;
-	font-size:  1.4rem;
-	text-align: center;
+.card_title {
+  color: #eee;
+  font-size: 1.4rem;
+  text-align: center;
+  width: 80%;
+  margin: auto;
 
-	span{
-		font-weight: normal;
-		font-size: .9rem;
-		display: block;
-	}
+  span {
+    font-weight: normal;
+    font-size: 0.9rem;
+    display: block;
+  }
 }
 
-.card_description{
-	color:#eee;
-	width: 80%;
-	margin: auto;
-	margin-top:  20px;
-	font-size: .9rem;
-	text-align: center;
+.card_description {
+  color: #eee;
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  text-align: center;
 
-	span{
-		font-weight: 500;
-		font-size:1.0rem;
-	}
+  span {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+}
+
+.iconSection {
+  font-size: 1.4rem;
+  color: #eee;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card_icon {
+  margin-bottom: 5px;
+}
+
+.card_deleteIcon {
+  color: rgba(#9d0208, 0.85);
+  cursor: pointer;
+}
+
+.card_editIcon {
+  color: rgba(#0a9396, 0.85);
+  cursor: pointer;
 }
