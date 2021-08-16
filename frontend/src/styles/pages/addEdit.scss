@@ -64,6 +64,15 @@
 	}
 }
 
+.alertArea{
+	background-color: rgba(255, 0, 0, 0.45);
+	border: 1px solid rgba(255, 0, 0, 0.4);
+	text-align: center;
+	padding: 10px;
+	margin-top: 15px;
+	border-radius: 5px;
+}
+
 @media (max-width: 650px) {
 	.addEdit-content {
 		width: 97%;

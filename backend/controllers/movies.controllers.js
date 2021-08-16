@@ -1,14 +1,13 @@
 const connection = require("../database/database");
 
- function getAllMovies(req, res) {
-
+function getAllMovies(req, res) {
   const title = req.query.title;
   const numPerPage = parseInt(req.query.npp, 10) || 5;
   const page = parseInt(req.query.page, 10) || 0;
 
   const skip = page * numPerPage;
 
-  const limit = skip + ',' + numPerPage; 
+  const limit = skip + "," + numPerPage;
   const search = ` WHERE m_title LIKE "%${title}%" `;
 
   const sql = "SELECT * FROM movie" + (title ? search : "") + ` limit ${limit}`;
@@ -27,7 +26,7 @@ const connection = require("../database/database");
   });
 }
 
- function getSingleMovie(req, res) {
+function getSingleMovie(req, res) {
   const _id = req.params.id;
   const sql = `SELECT * FROM movie WHERE m_id=${_id}`;
 
@@ -40,7 +39,7 @@ const connection = require("../database/database");
       }
     } else {
       if (err.code === "ER_BAD_FIELD_ERROR") {
-        res.json({ error: "Field type error" });
+        res.status(500).json({ error: "Field type error" });
       } else {
         throw err;
       }
@@ -48,11 +47,16 @@ const connection = require("../database/database");
   });
 }
 
- function addNewMovie(req, res) {
+function addNewMovie(req, res) {
   const { title, year, desc } = req.body;
 
   if (title && year && desc) {
     const sql = `INSERT INTO movie SET ?`;
+
+    if (isNaN(year)) {
+      res.status(500).json({ error: "Year must be a number" });
+      return
+    }
 
     const Amovie = {
       m_title: title,
@@ -65,18 +69,18 @@ const connection = require("../database/database");
         res.json({ message: "Movie added" });
       } else {
         if (err.code === "ER_DUP_ENTRY") {
-          res.json({ error: "There is already a movie with the same title" });
+          res.status(500).json({ error: "There is already a movie with the same title" });
         } else {
           throw err;
         }
       }
     });
   } else {
-    res.json({ error: "Some fields are empty" });
+    res.status(500).json({ error: "Some fields are empty" });
   }
 }
 
- function editAMovie(req, res) {
+function editAMovie(req, res) {
   const _id = req.params.id;
   const { title, year, desc } = req.body;
 
@@ -88,15 +92,15 @@ const connection = require("../database/database");
         if (result.affectedRows > 0) {
           res.json({ message: "Movie edited" });
         } else {
-          res.json({ error: `the id ${_id} does not exists` });
+          res.status(500).json({ error: `the id ${_id} does not exists` });
         }
       } else {
         switch (err.code) {
           case "ER_DUP_ENTRY":
-            res.json({ error: "There is already a movie with the same title" });
+            res.status(500).json({ error: "There is already a movie with the same title" });
             break;
           case "ER_BAD_FIELD_ERROR":
-            res.json({ error: "Field type error" });
+            res.status(500).json({ error: "Field type error" });
             break;
           default:
             throw err;
@@ -104,11 +108,11 @@ const connection = require("../database/database");
       }
     });
   } else {
-    res.json({ error: "Some fields are empty" });
+    res.status(500).json({ error: "Some fields are empty" });
   }
 }
 
- function deleteAMovie(req, res) {
+function deleteAMovie(req, res) {
   const _id = req.params.id;
 
   const sql = `DELETE FROM movie WHERE m_id = ${_id}`;
@@ -118,18 +122,17 @@ const connection = require("../database/database");
       if (result.affectedRows > 0) {
         res.json({ message: "Movie deleted" });
       } else {
-        res.json({ error: `the id ${_id} does not exists` });
+        res.status(500).json({ error: `the id ${_id} does not exists` });
       }
     } else {
       if (err.code === "ER_BAD_FIELD_ERROR") {
-        res.json({ error: "Field type error" });
+        res.status(500).json({ error: "Field type error" });
       } else {
         throw err;
       }
     }
   });
 }
-
 
 function addToDB(elem, res) {
   const title = elem[0];
@@ -158,7 +161,7 @@ function addToDB(elem, res) {
       }
     });
   } else {
-    res.json({ error: "Some fields are empty" });
+    res.status(500).json({ error: "Some fields are empty" });
     return;
   }
 }

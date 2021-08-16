@@ -1,24 +1,21 @@
 import React, { useContext, useEffect } from "react";
-import Header from "../components/Header"
+import Header from "../components/Header";
 import MovieContext from "../context/moviesContext";
-import temp from "../initialState_Test"
+import { loadMovies } from "../utils/functions";
 
-const Mainlayout = ({children}) => {
+const Mainlayout = ({ children }) => {
+  const { setMovies } = useContext(MovieContext);
 
-  const {setMovies} = useContext(MovieContext)
-
-  useEffect(()=>{
-    setMovies(temp)
-  }, [])// eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    loadMovies(setMovies);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
-      <Header/>
-       {children}
+      <Header />
+      {children}
     </div>
   );
 };
 
 export default Mainlayout;
-
-

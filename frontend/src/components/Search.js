@@ -1,14 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../styles/components/search.scss";
 import { BsSearch } from "react-icons/bs";
-import SearchContext from "../context/searchContext";
 
 const Search = () => {
-  const {search, setSearch } = useContext(SearchContext);
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value)    
-  };
 
   return (
     <div className="search_conteiner">
@@ -20,9 +14,7 @@ const Search = () => {
           type="text"
           className="input-search"
           id="input-search"
-          placeholder="Que pelicula estas buscando?"
-          value={search}
-          onChange={handleSearch}
+          placeholder="Que pelicula estas buscando?"          
         />
       </div>
     </div>

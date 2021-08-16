@@ -12,11 +12,11 @@ const Card_movie = ({ movie }) => {
       </div>
       <div className="card_movie-content">
         <h2 className="card_title">
-          {movie.titulo} <span>({movie.fechaEstreeno})</span>
+          {movie.m_title} <span>({movie.m_year})</span>
         </h2>
         <p className="card_description">
           <span>Descripcíon: </span>
-          {movie.descripcion}
+          {movie.m_description}
         </p>
       </div>
     </div>
