@@ -2,7 +2,7 @@ const connection = require("../database/database");
 
 function getAllMovies(req, res) {
   const title = req.query.title;
-  const numPerPage = parseInt(req.query.npp, 10) || 5;
+  const numPerPage = parseInt(req.query.npp, 10) || 9;
   const page = parseInt(req.query.page, 10) || 0;
 
   const skip = page * numPerPage;
@@ -12,6 +12,13 @@ function getAllMovies(req, res) {
 
   const sql = "SELECT * FROM movie" + (title ? search : "") + ` limit ${limit}`;
 
+  if (page < 0) {
+    res.json({
+      error: "Invalid page",
+    });
+    return;
+  }
+
   connection.query(sql, (err, result) => {
     if (err) throw err;
     if (result.length > 0) {
@@ -19,6 +26,8 @@ function getAllMovies(req, res) {
     } else {
       if (title) {
         res.json({ message: "No movie found" });
+      } else if (page) {
+        res.json({ message: "No more pages" });
       } else {
         res.json({ message: "Database is empty" });
       }
@@ -35,11 +44,12 @@ function getSingleMovie(req, res) {
       if (result.length > 0) {
         res.json(result);
       } else {
+        res.statusMessage = "NO_RESULTS";
         res.json({ message: "No results found" });
       }
     } else {
       if (err.code === "ER_BAD_FIELD_ERROR") {
-        res.status(500).json({ error: "Field type error" });
+        res.json({ error: "Field type error" });
       } else {
         throw err;
       }
@@ -54,8 +64,8 @@ function addNewMovie(req, res) {
     const sql = `INSERT INTO movie SET ?`;
 
     if (isNaN(year)) {
-      res.status(500).json({ error: "Year must be a number" });
-      return
+      res.json({ error: "Year must be a number" });
+      return;
     }
 
     const Amovie = {
@@ -63,20 +73,20 @@ function addNewMovie(req, res) {
       m_year: year,
       m_description: desc,
     };
-
     connection.query(sql, Amovie, (err) => {
       if (!err) {
         res.json({ message: "Movie added" });
       } else {
         if (err.code === "ER_DUP_ENTRY") {
-          res.status(500).json({ error: "There is already a movie with the same title" });
+          res.statusMessage = "REPEATED";
+          res.json({ error: "There is already a movie with the same title" });
         } else {
           throw err;
         }
       }
     });
   } else {
-    res.status(500).json({ error: "Some fields are empty" });
+    res.json({ error: "Some fields are empty" });
   }
 }
 
@@ -92,15 +102,16 @@ function editAMovie(req, res) {
         if (result.affectedRows > 0) {
           res.json({ message: "Movie edited" });
         } else {
-          res.status(500).json({ error: `the id ${_id} does not exists` });
+          res.json({ error: `the id ${_id} does not exists` });
         }
       } else {
         switch (err.code) {
           case "ER_DUP_ENTRY":
-            res.status(500).json({ error: "There is already a movie with the same title" });
+            res.statusMessage = "REPEATED";
+            res.json({ error: "There is already a movie with the same title" });
             break;
           case "ER_BAD_FIELD_ERROR":
-            res.status(500).json({ error: "Field type error" });
+            res.json({ error: "Field type error" });
             break;
           default:
             throw err;
@@ -122,11 +133,11 @@ function deleteAMovie(req, res) {
       if (result.affectedRows > 0) {
         res.json({ message: "Movie deleted" });
       } else {
-        res.status(500).json({ error: `the id ${_id} does not exists` });
+        res.json({ error: `the id ${_id} does not exists` });
       }
     } else {
       if (err.code === "ER_BAD_FIELD_ERROR") {
-        res.status(500).json({ error: "Field type error" });
+        res.json({ error: "Field type error" });
       } else {
         throw err;
       }
@@ -161,7 +172,7 @@ function addToDB(elem, res) {
       }
     });
   } else {
-    res.status(500).json({ error: "Some fields are empty" });
+    res.json({ error: "Some fields are empty" });
     return;
   }
 }

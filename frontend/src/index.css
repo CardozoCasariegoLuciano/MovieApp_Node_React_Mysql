@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -6,29 +6,43 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: rgb(38,213,252);
-  background: linear-gradient(90deg, rgba(38,213,252,1) 0%, rgba(163,71,255,1) 90%);
+  background: rgb(38, 213, 252);
+  background: linear-gradient(
+    90deg,
+    rgba(38, 213, 252, 1) 0%,
+    rgba(163, 71, 255, 1) 90%
+  );
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.Pagecontent{
+.Pagecontent {
   width: 60%;
   height: 100%;
   margin: auto;
 }
 
+.alertArea {
+  background-color: rgba(255, 0, 0, 0.45);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: #eee;
+  text-align: center;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
 @media (max-width: 1000px) {
-	.Pagecontent {
-		width: 95%;
-	}
+  .Pagecontent {
+    width: 95%;
+  }
 }
