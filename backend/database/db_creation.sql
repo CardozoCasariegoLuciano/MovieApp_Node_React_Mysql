@@ -1,0 +1,14 @@
+CREATE DATABASE moviesDB;
+
+use moviesDB;
+
+CREATE TABLE movie (
+m_id INT PRIMARY KEY AUTO_INCREMENT,
+m_title VARCHAR(100) NOT NULL UNIQUE,
+m_year INT NOT NULL,
+m_description VARCHAR(600) NOT NULL);
+
+
+SHOW TABLES;
+
+describe movie;

@@ -1,0 +1,11 @@
+{
+    "dataBase" : {
+        "host": "localhost",
+        "user": "root",
+        "password": "123luciano456",
+        "database": "moviesDB"
+    },
+    "app" : {
+        "port": 3050
+    }
+}

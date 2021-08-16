@@ -1,5 +1,5 @@
 const app = require("./app");
-require("./database");
+require("./database/database");
 
 async function main(){
     await app.listen(app.get("port"))

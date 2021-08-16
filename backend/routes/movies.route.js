@@ -14,7 +14,7 @@ router.route("/")
 
 router.route("/:id")
     .get(getSingleMovie)
-    .put(editAMovie)    
+    .put(editAMovie)
     .delete(deleteAMovie);
 
 module.exports = router;
