@@ -2,7 +2,7 @@
     "dataBase" : {
         "host": "localhost",
         "user": "root",
-        "password": "123luciano456",
+        "password": "root",
         "database": "moviesDB"
     },
     "app" : {
