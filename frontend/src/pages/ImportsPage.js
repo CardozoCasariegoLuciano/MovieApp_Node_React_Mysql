@@ -48,6 +48,8 @@ const ImportsPage = ({ history }) => {
           >
             <div className="modal_filetype-punta"></div>
             <p>Solo se pueden importar archivos .csv</p>
+            <br/>
+            <p>Separador: "<span className = "importSeparetor">;</span>"</p>
           </div>
           <input type="file" onChange={handleSelectFile} />
 
