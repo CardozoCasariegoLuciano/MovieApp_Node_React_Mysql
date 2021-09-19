@@ -1,4 +1,4 @@
-#Una app de películas
+# Una app de películas
 
 ### ¿ Cómo descargar el repositorio y correr el proyecto localmente ? 
 * **Paso 1:** Instalar la versión más reciente de [NodeJs](https://nodejs.org/es/).
