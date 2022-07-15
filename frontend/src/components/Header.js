@@ -15,7 +15,7 @@ const Header = () => {
               Agregar pelicula
             </Link>
             <Link className="link" to="/import">
-              Impotar
+              Importar
             </Link>
           </div>
         </div>

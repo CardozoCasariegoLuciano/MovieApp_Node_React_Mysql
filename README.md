@@ -1,10 +1,10 @@
-#Una app de películas
+# Una app de películas
 
 ### ¿ Cómo descargar el repositorio y correr el proyecto localmente ? 
 * **Paso 1:** Instalar la versión más reciente de [NodeJs](https://nodejs.org/es/).
 * **Paso 2:** Tener instalado el gestor de base de datos MySQL.
         NOTA: en caso de problemas de autenticación en la conexión entre el backend y la base de datos ingrese [aqui](https://www.digitalocean.com/community/tutorials/como-instalar-mysql-en-ubuntu-18-04-es) y siga el paso 3 
-* **Paso 3:** Clonar este repositorio usando <code>git clone https://github.com/CardozoCasariegoLuciano/Venturing_Prueba_tecnica.git</code>.
+* **Paso 3:** Clonar este repositorio usando <code>git clone https://github.com/CardozoCasariegoLuciano/MovieApp_Node_React_Mysql.git</code>.
 * **Paso 4:** Moverse hacia la carpeta del proyecto y tanto en la carpeta backend como frontend ejecutar <code>npm install</code> para instalar dependencias.
 *  **Paso 5:**  Crear la base de datos y la tabla correspondiente tal como indica el archivo 
 backend > database > db_creation.sql
